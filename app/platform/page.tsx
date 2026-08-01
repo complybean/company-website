@@ -30,8 +30,8 @@ export default function PlatformPage() {
             <p className="mb-5 text-xs font-bold uppercase tracking-[.18em] text-accent">Continuous alignment</p>
             <h2 className="text-4xl font-semibold leading-[1.08] tracking-[-0.035em]">As your regulatory case evolves, stay aware of what changes.</h2>
             <p className="mt-6 text-lg leading-8 text-primary-foreground/75">ComplyBean helps surface inconsistencies, evidence that may no longer align with your product, and relevant regulatory changes.</p>
-            <ul className="mt-8 space-y-3">
-              {['Make regulatory reasoning easier to follow', 'Keep product details and evidence aligned', 'Support informed decisions as your case evolves'].map((item) => <li key={item} className="flex items-center gap-3"><span className="flex size-7 items-center justify-center rounded-full bg-accent text-accent-foreground"><Check className="size-4" /></span>{item}</li>)}
+            <ul className="mt-8 space-y-4">
+              {['Make regulatory reasoning easier to follow', 'Keep product details and evidence aligned', 'Support informed decisions as your case evolves'].map((item) => <li key={item} className="flex items-start gap-3 leading-7"><span className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground"><Check className="size-4" /></span><span>{item}</span></li>)}
             </ul>
           </div>
           <div className="rounded-4xl bg-card p-5 text-foreground shadow-[0_35px_75px_-45px_rgba(0,0,0,.7)] md:p-8">
@@ -39,7 +39,7 @@ export default function PlatformPage() {
             <div className="relative flex flex-col gap-2 py-5 before:absolute before:bottom-9 before:left-4 before:top-9 before:border-l before:border-dashed before:border-primary/25">
               {connections.map(({ icon: Icon, label }, index) => <div key={label} className="relative flex items-center gap-3"><span className={`z-10 flex size-9 shrink-0 items-center justify-center rounded-xl border ${index === 0 ? 'bg-primary text-primary-foreground' : 'bg-background text-primary'}`}><Icon className="size-4" /></span><span className="h-px w-4 bg-border" /><div className="flex flex-1 items-center justify-between rounded-xl border bg-card p-3"><span className="text-sm font-medium">{label}</span>{index > 0 && <FileSearch className="size-4 text-primary" />}</div></div>)}
             </div>
-            <div className="flex items-center gap-3 rounded-2xl border border-primary/15 bg-primary/5 p-4 text-sm"><span className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground"><Check className="size-4" /></span><div><p className="font-semibold">Connections reviewed</p><p className="text-xs text-muted-foreground">Your team keeps the final decision.</p></div></div>
+            <div className="flex items-start gap-3 rounded-2xl border border-primary/15 bg-primary/5 p-4 text-sm"><span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground"><Check className="size-4" /></span><div><p className="font-bold">Connections reviewed</p><p className="mt-1 text-xs text-muted-foreground">Your team keeps the final decision.</p></div></div>
           </div>
         </div>
       </section>

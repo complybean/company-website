@@ -66,10 +66,13 @@
   .section-shell { @apply mx-auto max-w-7xl px-5 md:px-8; }
   .section-kicker { @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.18em] text-primary; }
   .section-kicker::before { content: ''; @apply block h-px w-7 bg-primary/50; }
+  .section-heading-label { @apply text-base font-bold text-primary; }
   .section-title { @apply text-4xl font-semibold leading-[1.08] tracking-[-0.035em] md:text-5xl; }
   .body-large { @apply text-lg leading-8 text-muted-foreground; }
   .soft-card { @apply border bg-card shadow-[0_18px_45px_-36px_rgba(18,55,42,.7)]; }
   .lift-card { @apply transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_24px_50px_-34px_rgba(18,55,42,.7)]; }
+  .icon-tile { @apply flex size-12 shrink-0 items-center justify-center rounded-2xl; }
+  .icon-tile-lg { @apply flex size-14 shrink-0 items-center justify-center rounded-2xl; }
 
   .hero-device-word { @apply relative isolate inline-block; }
   .hero-device-word::after {

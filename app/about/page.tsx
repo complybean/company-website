@@ -30,10 +30,10 @@ export default function AboutPage() {
           <h2 className="section-title">We know what it feels like to navigate without an in-house regulatory team.</h2>
           <div className="mt-7 space-y-3">
             {[
-              ['01', 'The challenge', 'Working in a research lab without in-house regulatory support, we had to navigate device classification, predicate selection, and evidence requirements largely on our own.'],
-              ['02', 'The missing piece', 'External consultants gave us answers—but rarely the reasoning behind them. Decisions were often delivered through experience and instinct, with little visibility into why one path was chosen over another.'],
-              ['03', 'The idea', 'Instead of simply telling teams what to do, ComplyBean helps them understand the reasoning behind regulatory decisions so they can move forward with greater certainty.'],
-            ].map(([number, title, text]) => <article key={number} className="soft-card lift-card grid gap-3 rounded-2xl p-5 sm:grid-cols-[2.5rem_1fr]"><span className="font-mono text-xs text-primary">{number}</span><div><h3 className="font-semibold">{title}</h3><p className="mt-2 leading-7 text-muted-foreground">{text}</p></div></article>)}
+              ['The challenge', 'Working in a research lab without in-house regulatory support, we had to navigate device classification, predicate selection, and evidence requirements largely on our own.'],
+              ['The missing piece', 'External consultants gave us answers—but rarely the reasoning behind them. Decisions were often delivered through experience and instinct, with little visibility into why one path was chosen over another.'],
+              ['The idea', 'Instead of simply telling teams what to do, ComplyBean helps them understand the reasoning behind regulatory decisions so they can move forward with greater certainty.'],
+            ].map(([title, text]) => <article key={title} className="soft-card lift-card rounded-2xl p-5"><h3 className="text-lg font-bold">{title}</h3><p className="mt-2 leading-7 text-muted-foreground">{text}</p></article>)}
           </div>
           <p className="mt-6 flex items-start gap-3 font-medium"><Check className="mt-1 size-5 shrink-0 text-primary" />Regulatory intelligence designed to make informed human judgment stronger.</p>
         </div>
@@ -42,7 +42,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <div className="mb-10 max-w-2xl"><p className="section-kicker mb-5">Our principles</p><h2 className="section-title">Built around clarity, connection, and human judgment.</h2></div>
           <div className="grid gap-4 md:grid-cols-3">
-            {principles.map(({ icon: Icon, title, text }, index) => <article key={title} className="soft-card lift-card relative overflow-hidden rounded-3xl p-6 md:p-8"><span className="absolute right-4 top-2 text-7xl font-semibold text-primary/[.035]">{index + 1}</span><span className="mb-12 flex size-12 items-center justify-center rounded-2xl bg-accent"><Icon className="size-6" /></span><h3 className="text-2xl font-semibold">{title}</h3><p className="mt-3 leading-7 text-muted-foreground">{text}</p></article>)}
+            {principles.map(({ icon: Icon, title, text }) => <article key={title} className="soft-card lift-card rounded-3xl p-6 md:p-8"><span className="icon-tile mb-12 bg-accent"><Icon className="size-6" /></span><h3 className="text-2xl font-bold">{title}</h3><p className="mt-3 leading-7 text-muted-foreground">{text}</p></article>)}
           </div>
         </div>
       </section>

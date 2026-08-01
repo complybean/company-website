@@ -27,11 +27,10 @@ export default function WhatWeDoPage() {
           <p className="body-large max-w-2xl lg:justify-self-end">Each decision affects the next. ComplyBean helps your team follow those connections instead of assembling an answer from disconnected documents and searches.</p>
         </div>
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
-          {services.map(({ icon: Icon, title, text }, index) => (
-            <article key={title} className="soft-card lift-card relative flex min-h-64 flex-col justify-between overflow-hidden rounded-4xl p-6 md:p-8">
-              <span className="absolute -right-3 -top-7 text-[8rem] font-semibold text-primary/[.035]">{index + 1}</span>
-              <div className="flex items-start justify-between"><span className="flex size-12 items-center justify-center rounded-2xl bg-secondary text-primary"><Icon className="size-6" /></span><span className="font-mono text-sm text-muted-foreground">0{index + 1}</span></div>
-              <div><h3 className="text-2xl font-semibold">{title}</h3><p className="mt-3 max-w-lg leading-7 text-muted-foreground">{text}</p></div>
+          {services.map(({ icon: Icon, title, text }) => (
+            <article key={title} className="soft-card lift-card flex min-h-64 flex-col justify-between rounded-4xl p-6 md:p-8">
+              <span className="icon-tile bg-secondary text-primary"><Icon className="size-6" /></span>
+              <div><h3 className="text-2xl font-bold">{title}</h3><p className="mt-3 max-w-lg leading-7 text-muted-foreground">{text}</p></div>
             </article>
           ))}
         </div>

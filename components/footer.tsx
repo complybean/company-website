@@ -9,8 +9,8 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 md:grid-cols-[1fr_auto_auto] md:px-8">
         <div className="max-w-xs">
           <Link href="/" className="inline-flex items-center gap-2 rounded-lg text-foreground" aria-label="ComplyBean home">
-            <Image src="/images/complybean-mark.png" alt="" width={32} height={32} className="size-8 object-contain" />
-            <span className="font-semibold">ComplyBean</span>
+            <Image src="/images/complybean-mark-transparent.png" alt="" width={44} height={44} className="size-10 object-contain" />
+            <span className="text-lg font-semibold">ComplyBean</span>
           </Link>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Serious compliance. Softer landing.</p>
         </div>

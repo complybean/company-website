@@ -25,13 +25,13 @@ export default function WhoItsForPage() {
           <p className="section-kicker mb-5">Designed around your reality</p>
           <h2 className="section-title">Expert structure, without the full regulatory department.</h2>
           <p className="body-large mt-6">Whether the work begins with a product idea, scientific research, or a growing submission plan, the platform meets your team at its current stage.</p>
-          <div className="mt-8 flex items-center gap-3 rounded-2xl border bg-card p-4 text-sm font-medium text-primary shadow-sm"><span className="flex size-9 items-center justify-center rounded-xl bg-secondary"><ArrowRight className="size-4" /></span>Move from uncertainty to a clearer next step.</div>
+          <div className="mt-8 flex items-start gap-3 rounded-2xl border bg-card p-4 text-sm font-medium leading-6 text-primary shadow-sm"><span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-secondary"><ArrowRight className="size-4" /></span><span className="pt-1">Move from uncertainty to a clearer next step.</span></div>
         </div>
         <div className="flex flex-col gap-4">
           {groups.map(({ icon: Icon, title, text, benefit }, index) => (
             <article key={title} className="soft-card lift-card grid gap-6 rounded-3xl p-6 md:grid-cols-[auto_1fr] md:p-8">
-              <span className={`flex size-14 items-center justify-center rounded-2xl ${index === 1 ? 'bg-accent text-accent-foreground' : 'bg-secondary text-primary'}`}><Icon className="size-6" /></span>
-              <div><div className="flex items-center justify-between gap-4"><h3 className="text-3xl font-semibold">{title}</h3><span className="font-mono text-xs text-muted-foreground">0{index + 1}</span></div>
+              <span className={`icon-tile-lg ${index === 1 ? 'bg-accent text-accent-foreground' : 'bg-secondary text-primary'}`}><Icon className="size-6" /></span>
+              <div><h3 className="text-3xl font-bold">{title}</h3>
               <p className="mt-3 text-lg leading-8 text-muted-foreground">{text}</p>
               <p className="mt-6 border-t pt-5 font-medium text-primary">{benefit}</p></div>
             </article>

@@ -63,7 +63,7 @@ export function RegulatoryJourneyVisual() {
 
       <div className="absolute left-1/2 top-1/2 z-10 flex size-44 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-primary/10 bg-card shadow-[0_22px_0_rgba(31,93,66,.08),0_38px_65px_-35px_rgba(18,55,42,.8)] sm:size-56">
         <div className="absolute inset-3 rounded-full border border-primary/10" />
-        <Image src="/images/complybean-mark.png" alt="ComplyBean loop mark" width={220} height={220} className="relative size-36 object-contain sm:size-48" priority />
+        <Image src="/images/complybean-mark-transparent.png" alt="ComplyBean loop mark" width={220} height={220} className="relative size-36 object-contain sm:size-48" priority />
       </div>
     </VisualFrame>
   )
@@ -100,7 +100,7 @@ export function TeamVisual() {
       <div className="relative mx-auto flex min-h-[21rem] max-w-sm flex-col items-center justify-center pt-8">
         {people.map(({ icon: Icon, title, detail, className }, index) => (
           <div key={title} className={`flex w-64 items-center gap-4 rounded-3xl border bg-card p-4 shadow-[0_18px_35px_-22px_rgba(18,55,42,.85)] ${className}`}>
-            <span className={`flex size-12 items-center justify-center rounded-2xl ${index === 1 ? 'bg-accent' : 'bg-secondary text-primary'}`}><Icon className="size-5" /></span>
+            <span className={`icon-tile ${index === 1 ? 'bg-accent' : 'bg-secondary text-primary'}`}><Icon className="size-5" /></span>
             <div><p className="font-semibold">{title}</p><p className="mt-0.5 text-xs text-muted-foreground">{detail}</p></div>
           </div>
         ))}
@@ -117,7 +117,7 @@ export function EvidenceStackVisual() {
         <div className="absolute size-56 translate-x-7 translate-y-7 rounded-[2rem] border border-primary/10 bg-primary/10" />
         <div className="absolute size-56 translate-x-3 translate-y-3 rounded-[2rem] border border-primary/10 bg-card/70 shadow-sm" />
         <div className="relative w-64 rounded-[2rem] border bg-card p-5 shadow-[0_28px_50px_-30px_rgba(18,55,42,.8)]">
-          <div className="flex items-center justify-between"><span className="flex size-11 items-center justify-center rounded-2xl bg-secondary text-primary"><FileSearch className="size-5" /></span><span className="rounded-full bg-accent px-3 py-1 text-[.65rem] font-bold uppercase tracking-wider">Aligned</span></div>
+          <div className="flex items-center justify-between"><span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-secondary text-primary"><FileSearch className="size-5" /></span><span className="rounded-full bg-accent px-3 py-1 text-[.65rem] font-bold uppercase tracking-wider">Aligned</span></div>
           <div className="mt-6 space-y-3"><span className="block h-2 w-3/4 rounded-full bg-primary/20" /><span className="block h-2 w-full rounded-full bg-primary/10" /><span className="block h-2 w-5/6 rounded-full bg-primary/10" /></div>
           <div className="mt-7 grid grid-cols-3 gap-2">{['Risk', 'Test', 'Label'].map((item) => <span key={item} className="rounded-xl bg-secondary py-2 text-center text-[.65rem] font-semibold">{item}</span>)}</div>
         </div>
@@ -139,7 +139,7 @@ export function PathwayFlowVisual() {
         {steps.map(({ icon: Icon, label, detail }, index) => (
           <div key={label} className="contents">
             <div className="rounded-3xl border bg-card p-5 shadow-[0_16px_35px_-26px_rgba(18,55,42,.8)]">
-              <div className="flex items-center gap-3"><span className={`flex size-11 items-center justify-center rounded-2xl ${index === 2 ? 'bg-accent' : 'bg-secondary text-primary'}`}><Icon className="size-5" /></span><div><p className="font-semibold">{label}</p><p className="text-xs text-muted-foreground">{detail}</p></div></div>
+              <div className="flex items-center gap-3"><span className={`flex size-11 shrink-0 items-center justify-center rounded-2xl ${index === 2 ? 'bg-accent' : 'bg-secondary text-primary'}`}><Icon className="size-5" /></span><div><p className="font-semibold">{label}</p><p className="text-xs text-muted-foreground">{detail}</p></div></div>
             </div>
             {index < steps.length - 1 && <span className="hidden size-9 items-center justify-center rounded-full border bg-card text-primary md:flex"><ArrowRight className="size-4" /></span>}
           </div>
