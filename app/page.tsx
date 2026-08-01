@@ -3,6 +3,7 @@ import { ConnectedEvidence, PeopleWeHelp, RegulatoryJourney, WhatWeDo } from '@/
 import { SiteHeader } from '@/components/site-header'
 import { ArrowUpRight, Cable, Check, FileCheck2, Files, ShieldCheck, Sparkles } from 'lucide-react'
 import Image from 'next/image'
+import CopyEmail from '@/components/CopyEmail'
 
 const steps = [
   { number: '01', title: 'Connect', text: 'Your tools, in a few clicks.' },
@@ -82,7 +83,17 @@ export default function Page() {
       <section id="start" className="px-5 pb-8 md:px-8">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 rounded-4xl bg-foreground p-8 text-background md:flex-row md:items-center md:p-14">
           <div><p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Ready when you are</p><h2 className="max-w-2xl text-balance text-4xl font-semibold leading-tight tracking-tight md:text-5xl">Take the sting out of compliance.</h2></div>
-          <a href="mailto:admin@complybean.com" className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-accent px-6 font-semibold text-accent-foreground transition-transform hover:-translate-y-0.5">Let&apos;s talk <ArrowUpRight className="size-4" /></a>
+          <div className="flex flex-col items-start gap-4 md:items-end">
+            <a
+              href="mailto:admin@complybean.com"
+              className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-accent px-6 font-semibold text-accent-foreground transition-transform hover:-translate-y-0.5"
+            >
+              Let&apos;s talk
+              <ArrowUpRight className="size-4" />
+            </a>
+          
+            <CopyEmail />
+          </div>
         </div>
       </section>
       <Footer />
