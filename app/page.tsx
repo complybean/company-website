@@ -32,7 +32,6 @@ export default function Page() {
       <SiteHeader />
       <section className="mx-auto grid max-w-7xl gap-12 px-5 pb-20 pt-12 md:px-8 lg:grid-cols-[1.02fr_.98fr] lg:items-center lg:pb-28 lg:pt-20">
         <div className="flex flex-col items-start gap-7">
-          <span className="inline-flex items-center gap-2 rounded-full border bg-card px-4 py-2 text-sm font-medium text-primary"><Sparkles className="size-4" /> Medical device compliance, made clearer</span>
           <h1 className="max-w-3xl text-balance font-sans text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">You built the device. <span className="text-primary" style={{ color: '#009e6a' }}>You shouldn't have to build a regulatory team too.</span></h1>
           <p className="max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">ComplyBean helps medical-device companies navigate regulatory pathways with greater clarity, and confidence without the need for a dedicated in-house regulatory team. </p>
           <div className="flex flex-wrap items-center gap-3">
