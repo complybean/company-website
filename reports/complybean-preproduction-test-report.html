@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ComplyBean pre-production test report</title>
+  <style>
+    @page { size: A4; margin: 15mm; }
+    :root { --ink:#12372a; --muted:#557164; --line:#cfdccf; --paper:#fffef7; --wash:#f7f8f2; --sage:#dce9dc; --lime:#b9ee4a; --green:#1f5d42; --red:#9a3412; --amber:#a16207; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--wash); font-family:Arial, Helvetica, sans-serif; font-size:10.2pt; line-height:1.5; }
+    .page { background:var(--paper); min-height:267mm; padding:2mm 0; }
+    .page + .page { break-before:page; page-break-before:always; }
+    .cover { min-height:267mm; padding:24mm 18mm; display:flex; flex-direction:column; justify-content:space-between; background:linear-gradient(145deg, #fffef7 0%, #eef6e8 58%, #dce9dc 100%); overflow:hidden; position:relative; }
+    .cover:after { content:""; position:absolute; width:185mm; height:185mm; border:1px solid rgba(31,93,66,.14); border-radius:50%; right:-82mm; bottom:-68mm; box-shadow:0 0 0 28mm rgba(31,93,66,.035),0 0 0 56mm rgba(31,93,66,.025); }
+    .brand { display:flex; align-items:center; gap:9px; font-weight:700; font-size:14pt; position:relative; z-index:1; }
+    .mark { width:25px; height:25px; border-radius:8px; background:var(--paper); display:grid; place-items:center; box-shadow:0 6px 18px rgba(18,55,42,.12); color:#00a56f; font-size:19px; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.16em; font-size:8pt; font-weight:700; color:var(--green); }
+    h1 { margin:10px 0 14px; font-size:37pt; line-height:1.04; letter-spacing:-.045em; max-width:590px; }
+    h2 { margin:0 0 14px; font-size:20pt; line-height:1.15; letter-spacing:-.025em; }
+    h3 { margin:0 0 7px; font-size:11.5pt; }
+    p { margin:0 0 10px; }
+    .lead { max-width:590px; color:var(--muted); font-size:14pt; line-height:1.5; }
+    .meta { position:relative; z-index:1; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; max-width:600px; }
+    .meta div { border-top:1px solid var(--green); padding-top:7px; }
+    .meta span { display:block; color:var(--muted); font-size:8pt; text-transform:uppercase; letter-spacing:.1em; }
+    .meta strong { display:block; margin-top:2px; font-size:10pt; }
+    .content { padding:6mm 7mm; }
+    .topline { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:20px; color:var(--muted); font-size:8.5pt; }
+    .topline strong { color:var(--ink); }
+    .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .card { border:1px solid var(--line); border-radius:12px; padding:13px; background:#fff; break-inside:avoid; }
+    .card.green { border-color:#b8d4c0; background:#f3f8ef; }
+    .card.amber { border-color:#ead49d; background:#fffaf0; }
+    .card.red { border-color:#edc3b5; background:#fff7f3; }
+    .big-number { font-size:24pt; font-weight:700; line-height:1; color:var(--green); letter-spacing:-.05em; }
+    .label { margin-top:4px; color:var(--muted); font-size:8.3pt; text-transform:uppercase; letter-spacing:.1em; font-weight:700; }
+    .status { display:inline-flex; align-items:center; gap:5px; border-radius:999px; padding:3px 8px; font-size:8pt; font-weight:700; white-space:nowrap; }
+    .pass { background:#dff4df; color:#166534; }.warn { background:#fff0bd; color:#854d0e; }.fail { background:#fee2e2; color:#991b1b; }.na { background:#e5e7eb; color:#4b5563; }
+    table { width:100%; border-collapse:collapse; margin:8px 0 14px; font-size:8.8pt; }
+    th { text-align:left; background:var(--sage); color:var(--ink); font-size:8pt; letter-spacing:.06em; text-transform:uppercase; }
+    th,td { padding:8px 7px; vertical-align:top; border-bottom:1px solid var(--line); }
+    tr { break-inside:avoid; }
+    .small { color:var(--muted); font-size:8.7pt; }
+    .note { border-left:3px solid var(--lime); padding:9px 12px; background:#f7faed; margin:12px 0; }
+    ul { padding-left:18px; margin:7px 0 12px; } li { margin:3px 0; }
+    .metric { text-align:center; padding:13px 8px; border-radius:12px; background:var(--wash); border:1px solid var(--line); }
+    .metric strong { display:block; font-size:22pt; letter-spacing:-.05em; }.metric span { font-size:8pt; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+    .footer { margin-top:24px; padding-top:8px; border-top:1px solid var(--line); color:var(--muted); display:flex; justify-content:space-between; font-size:8pt; }
+    .risk { display:grid; grid-template-columns:30px 1fr; gap:9px; align-items:start; }.risk b { display:grid; place-items:center; width:25px; height:25px; border-radius:8px; background:var(--green); color:#fff; font-size:9pt; }.risk.warn b { background:var(--amber); }.risk.high b { background:var(--red); }
+    a { color:var(--green); word-break:break-word; }
+  </style>
+</head>
+<body>
+  <section class="page cover">
+    <div class="brand"><span class="mark">◔</span> ComplyBean</div>
+    <div>
+      <p class="eyebrow">Pre-production quality assurance</p>
+      <h1>Website testing report</h1>
+      <p class="lead">Comprehensive functional, responsive, performance, accessibility, security, SEO, deployment, and live-domain validation for the ComplyBean marketing website.</p>
+    </div>
+    <div class="meta">
+      <div><span>Prepared</span><strong>01 August 2026</strong></div>
+      <div><span>Release tested</span><strong>f961c72</strong></div>
+      <div><span>Environment</span><strong>GitHub Pages / Production</strong></div>
+    </div>
+  </section>
+
+  <section class="page"><div class="content">
+    <div class="topline"><strong>ComplyBean</strong><span>Executive summary</span></div>
+    <h2>Conditional launch approval</h2>
+    <p>The public site is operational, deploys successfully, and has no confirmed functional, accessibility, or dependency-security failure. It is suitable for continued use and stakeholder review. Before treating it as fully marketing-launch ready, resolve the SEO and mobile-asset findings below.</p>
+    <div class="grid3">
+      <div class="card green"><div class="big-number">6/6</div><div class="label">Public routes live and returning 200</div></div>
+      <div class="card green"><div class="big-number">100</div><div class="label">Accessibility score, mobile &amp; desktop</div></div>
+      <div class="card amber"><div class="big-number">83</div><div class="label">Mobile Lighthouse performance score</div></div>
+    </div>
+    <h3 style="margin-top:22px">Release decision</h3>
+    <table><thead><tr><th>Area</th><th>Decision</th><th>Reason</th></tr></thead><tbody>
+      <tr><td>Functional release</td><td><span class="status pass">PASS</span></td><td>Static build, navigation, mobile menu, keyboard behavior, images, email links, live routes, and 404 behavior work as expected.</td></tr>
+      <tr><td>Accessibility release</td><td><span class="status pass">PASS</span></td><td>Lighthouse accessibility score is 100 in both profiles; keyboard and skip-link behavior were exercised in Firefox.</td></tr>
+      <tr><td>Security baseline</td><td><span class="status pass">PASS</span></td><td>HTTPS, HSTS, valid TLS certificate, no exposed client secrets/debug patterns, and no known production dependency vulnerabilities.</td></tr>
+      <tr><td>SEO / discoverability</td><td><span class="status warn">CONDITIONAL</span></td><td>Canonical URLs are wrong on subpages; sitemap and robots files are missing; social metadata is incomplete.</td></tr>
+      <tr><td>Mobile performance</td><td><span class="status warn">IMPROVE</span></td><td>An oversized logo PNG causes approximately 1.2 MB of avoidable mobile transfer.</td></tr>
+    </tbody></table>
+    <div class="note"><strong>Scope note:</strong> This is a static marketing site with an email contact action. There are no accounts, forms, payments, checkout, APIs, databases, authentication, or server-side CRUD flows to validate.</div>
+    <div class="footer"><span>ComplyBean pre-production test report</span><span>Page 2</span></div>
+  </div></section>
+
+  <section class="page"><div class="content">
+    <div class="topline"><strong>ComplyBean</strong><span>Scope and methodology</span></div>
+    <h2>What was tested</h2>
+    <div class="grid2">
+      <div class="card"><h3>Application under test</h3><ul><li>Next.js 16.2.12 static export with GitHub Pages deployment.</li><li>Seven generated routes: home, About, How It Works, Platform, What We Do, Who It&apos;s For, and 404.</li><li>One client-side mobile navigation component and email-based contact links.</li><li>Custom domain: <a href="https://complybean.com">https://complybean.com</a>.</li></ul></div>
+      <div class="card"><h3>Test environments</h3><ul><li>Production build: <code>next build --webpack</code>, limited to two workers.</li><li>Chrome Lighthouse 12.8.2: desktop and Android Chrome emulation (412×823).</li><li>Firefox headless: keyboard, navigation, image, and responsive checks.</li><li>Live GitHub Pages domain, GitHub Actions API, DNS, TLS, and HTTP headers.</li></ul></div>
+    </div>
+    <h3 style="margin-top:20px">Test coverage matrix</h3>
+    <table><thead><tr><th>Checklist category</th><th>Coverage</th><th>Result</th></tr></thead><tbody>
+      <tr><td>Functional testing</td><td>Routes, navigation, mobile menu, Escape behavior, skip link, mailto actions, images, 404.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Cross-browser / device</td><td>Chrome desktop + Android emulation; Firefox at five widths. Safari/Edge and physical devices unavailable.</td><td><span class="status pass">PASS WITH LIMITS</span></td></tr>
+      <tr><td>Performance</td><td>Desktop and mobile Lighthouse; asset transfer review; light concurrency smoke test.</td><td><span class="status warn">IMPROVE</span></td></tr>
+      <tr><td>Security</td><td>HTTPS/TLS/HSTS, public headers, dependency audit, source scan.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Accessibility</td><td>Lighthouse, keyboard focus, skip link, labels, image alternatives.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>SEO / metadata</td><td>Titles, descriptions, canonicals, indexing, Open Graph, robots, sitemap, structured data.</td><td><span class="status warn">CONDITIONAL</span></td></tr>
+      <tr><td>Automated testing</td><td>CI lint, type-check, and production build. No unit or E2E suite exists.</td><td><span class="status warn">GAP</span></td></tr>
+    </tbody></table>
+    <h3>Explicitly not applicable</h3>
+    <p class="small">Signup/login, checkout, payments, form validation, CRUD, database query profiling, API rate limiting, CSRF, authorization boundaries, third-party payment/email APIs, and backend load testing are not present in this release.</p>
+    <div class="footer"><span>ComplyBean pre-production test report</span><span>Page 3</span></div>
+  </div></section>
+
+  <section class="page"><div class="content">
+    <div class="topline"><strong>ComplyBean</strong><span>Functional and responsive testing</span></div>
+    <h2>Functional, navigation, and UI QA</h2>
+    <table><thead><tr><th>Test</th><th>Evidence</th><th>Outcome</th></tr></thead><tbody>
+      <tr><td>Production compile</td><td>ESLint, TypeScript, and optimized static build completed; all seven generated routes listed by Next.js.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Route availability</td><td>Local export and live domain returned successful responses for /, /about/, /how-it-works/, /platform/, /what-we-do/, and /who-its-for/.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Broken links and assets</td><td>23 internal references validated in the static output. All visible images completed with a non-zero natural width.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Content structure</td><td>One H1 per public page; no duplicate IDs; title and description tags present; no placeholder/lorem/debug references in app code.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Mobile navigation</td><td>Firefox: menu opened, Escape closed it, and the About link navigated successfully.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Keyboard path</td><td>First Tab focuses the “Skip to main content” link; focusable controls expose accessible labels.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Email actions</td><td>2–3 mailto links available per page as designed. Client does not submit or store user data.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Not-found response</td><td>Live missing path returned HTTP 404 with the generated not-found page title.</td><td><span class="status pass">PASS</span></td></tr>
+    </tbody></table>
+    <h3>Responsive matrix</h3>
+    <div class="grid3">
+      <div class="metric"><strong>30</strong><span>Firefox route / viewport checks</span></div>
+      <div class="metric"><strong>0</strong><span>Horizontal overflow failures</span></div>
+      <div class="metric"><strong>0</strong><span>Broken-image failures</span></div>
+    </div>
+    <p style="margin-top:12px" class="small">Firefox exercised all six public routes at 500, 768, 1024, 1440, and 1920 px. Chrome Lighthouse also provided true Android Chrome emulation at 412×823; headline wrapping, CTAs, menu access, and visual containment passed visual inspection.</p>
+    <div class="footer"><span>ComplyBean pre-production test report</span><span>Page 4</span></div>
+  </div></section>
+
+  <section class="page"><div class="content">
+    <div class="topline"><strong>ComplyBean</strong><span>Performance and load</span></div>
+    <h2>Performance profile</h2>
+    <table><thead><tr><th>Profile</th><th>Performance</th><th>Accessibility</th><th>Best practices</th><th>SEO</th><th>Key timings</th></tr></thead><tbody>
+      <tr><td>Desktop</td><td><strong>99</strong></td><td>100</td><td>100</td><td>100</td><td>LCP 0.9 s · CLS 0 · TBT 0 ms · Speed Index 0.3 s</td></tr>
+      <tr><td>Mobile (simulated)</td><td><strong>83</strong></td><td>100</td><td>100</td><td>100</td><td>LCP 4.7 s · CLS 0 · TBT 10 ms · Speed Index 1.4 s</td></tr>
+    </tbody></table>
+    <div class="grid2">
+      <div class="card amber"><h3>Primary performance finding</h3><p><strong>compliance-mark.png</strong> is a 1.27 MB, 1536×1024 PNG that is displayed around 144 px in the homepage visual.</p><p>Lighthouse estimates roughly <strong>1.2 MB</strong> of avoidable transfer. Convert it to WebP/AVIF and provide appropriately sized variants; do not preload the full-resolution source unnecessarily.</p></div>
+      <div class="card"><h3>Additional observations</h3><ul><li>Total observed mobile page transfer: 1.867 MiB.</li><li>Estimated unused JavaScript: 172 KiB (mostly shared Next.js runtime bundles).</li><li>CSS: about 44.7 KiB; no unused-CSS opportunity was reported.</li><li>Mobile LCP element was the hero H1; simulated render delay dominated the metric.</li></ul></div>
+    </div>
+    <h3 style="margin-top:20px">Light concurrent-request smoke test</h3>
+    <table><thead><tr><th>Requests</th><th>Concurrency</th><th>Success</th><th>Average</th><th>P95</th><th>Maximum</th></tr></thead><tbody><tr><td>30</td><td>5</td><td>30 / 30 HTTP 200</td><td>99 ms</td><td>296 ms</td><td>304 ms</td></tr></tbody></table>
+    <p class="small">This is a safe light-load smoke test, not a capacity or DDoS benchmark. GitHub Pages is a static CDN-backed host, so database and application-server load tests do not apply.</p>
+    <div class="footer"><span>ComplyBean pre-production test report</span><span>Page 5</span></div>
+  </div></section>
+
+  <section class="page"><div class="content">
+    <div class="topline"><strong>ComplyBean</strong><span>Security and accessibility</span></div>
+    <h2>Security baseline</h2>
+    <table><thead><tr><th>Check</th><th>Evidence</th><th>Outcome</th></tr></thead><tbody>
+      <tr><td>Transport security</td><td>HTTP apex redirects 301 to HTTPS; www redirects 301 to HTTPS apex. HSTS: <code>max-age=31556952</code>.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>TLS certificate</td><td>Let&apos;s Encrypt certificate; SAN includes complybean.com and www.complybean.com; valid 29 Jul–27 Oct 2026.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Dependency audit</td><td><code>pnpm audit --prod --audit-level moderate</code>: no known vulnerabilities.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Client source scan</td><td>No <code>dangerouslySetInnerHTML</code>, <code>eval</code>, debug logs, localhost references, or environment-variable exposure found in app source.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Attack surface</td><td>No user input, authentication, server API, storage, database, payment, or form submission surface in this static release.</td><td><span class="status na">NOT APPLICABLE</span></td></tr>
+      <tr><td>Security headers</td><td>HSTS is present. CSP, Referrer-Policy, and X-Content-Type-Options are not supplied by the current GitHub Pages configuration.</td><td><span class="status warn">RECOMMEND</span></td></tr>
+    </tbody></table>
+    <h2 style="margin-top:20px">Accessibility</h2>
+    <div class="grid2">
+      <div class="card green"><h3>Automated result</h3><p><strong>Lighthouse accessibility: 100 / 100</strong> in both desktop and mobile profiles.</p><ul><li>Alt attributes present on all rendered images.</li><li>One H1 per route and no duplicate IDs.</li><li>Interactive controls include labels and visible focus handling.</li></ul></div>
+      <div class="card"><h3>Manual browser checks</h3><ul><li>Keyboard focus begins at the skip link.</li><li>Menu operates by keyboard and closes with Escape.</li><li>Reduced-motion CSS disables transitions and animation durations.</li><li>Visual inspection found no obvious clipping at tested breakpoints.</li></ul><p class="small">Not performed: NVDA, VoiceOver, or a manual screen-reader reading-order review.</p></div>
+    </div>
+    <div class="footer"><span>ComplyBean pre-production test report</span><span>Page 6</span></div>
+  </div></section>
+
+  <section class="page"><div class="content">
+    <div class="topline"><strong>ComplyBean</strong><span>SEO, configuration, and deployment</span></div>
+    <h2>Search and social metadata</h2>
+    <table><thead><tr><th>Check</th><th>Finding</th><th>Priority</th></tr></thead><tbody>
+      <tr><td>Titles and descriptions</td><td>Present on all public pages. Page titles are route-specific.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Canonical URLs</td><td><strong>Defect:</strong> every internal page currently outputs <code>https://complybean.com/</code> as its canonical, including About, Platform, and How It Works.</td><td><span class="status fail">HIGH</span></td></tr>
+      <tr><td>Robots and sitemap</td><td><strong>Missing:</strong> live <code>/robots.txt</code> and <code>/sitemap.xml</code> both return 404.</td><td><span class="status fail">HIGH</span></td></tr>
+      <tr><td>Open Graph / Twitter</td><td>All subpages inherit the homepage social title. No <code>og:image</code> is set.</td><td><span class="status warn">MEDIUM</span></td></tr>
+      <tr><td>Structured data</td><td>No JSON-LD/schema.org payload found.</td><td><span class="status warn">MEDIUM</span></td></tr>
+      <tr><td>Indexing</td><td>Public pages are indexable; generated 404 is marked noindex.</td><td><span class="status pass">PASS</span></td></tr>
+    </tbody></table>
+    <h2 style="margin-top:20px">Production configuration</h2>
+    <table><thead><tr><th>Check</th><th>Evidence</th><th>Outcome</th></tr></thead><tbody>
+      <tr><td>Deployment</td><td>GitHub Actions workflow ran successfully for commit <code>f961c72</code>.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>CI quality gate</td><td>Frozen install, lint, TypeScript type-check, static build, and GitHub Pages deployment are configured.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>CPU / memory protection</td><td>Next.js static generation is capped at two workers. Local production checks completed in approximately 10–11 seconds.</td><td><span class="status pass">PASS</span></td></tr>
+      <tr><td>Monitoring / analytics</td><td>No analytics, error monitoring, or uptime monitoring integration was detected.</td><td><span class="status warn">OPTIONAL</span></td></tr>
+      <tr><td>Rollback</td><td>Git history plus GitHub Pages deployment workflow support a rollback by reverting/redeploying a known-good commit.</td><td><span class="status pass">READY</span></td></tr>
+    </tbody></table>
+    <div class="footer"><span>ComplyBean pre-production test report</span><span>Page 7</span></div>
+  </div></section>
+
+  <section class="page"><div class="content">
+    <div class="topline"><strong>ComplyBean</strong><span>Recommendations and evidence</span></div>
+    <h2>Prioritized remediation plan</h2>
+    <div class="risk high"><b>1</b><div><h3>Correct page-level canonical metadata</h3><p>Give every route its own canonical URL. The current site tells search engines that all pages are duplicates of the homepage.</p></div></div>
+    <div class="risk high" style="margin-top:12px"><b>2</b><div><h3>Add <code>robots.txt</code> and <code>sitemap.xml</code></h3><p>Publish the public route inventory and submit the sitemap in Google Search Console/Bing Webmaster Tools.</p></div></div>
+    <div class="risk warn" style="margin-top:12px"><b>3</b><div><h3>Optimize the ComplyBean mark</h3><p>Export appropriately sized WebP/AVIF variants, update the displayed logo references, and retest mobile LCP. This is the highest-value performance improvement.</p></div></div>
+    <div class="risk warn" style="margin-top:12px"><b>4</b><div><h3>Complete social and structured metadata</h3><p>Set each page&apos;s Open Graph/Twitter title, description, and sharing image; add Organization/WebSite JSON-LD if appropriate.</p></div></div>
+    <div class="risk warn" style="margin-top:12px"><b>5</b><div><h3>Add automated browser smoke tests to CI</h3><p>At minimum, assert route availability, no overflow, no broken images, skip-link focus, and mobile menu behavior on every deployment.</p></div></div>
+    <div class="risk" style="margin-top:12px"><b>6</b><div><h3>Optional production hardening</h3><p>Consider uptime monitoring, error tracking, analytics consent strategy, and a custom-header capable edge layer if CSP and additional security headers are required.</p></div></div>
+    <h3 style="margin-top:22px">Evidence links</h3>
+    <ul><li>Production site: <a href="https://complybean.com">https://complybean.com</a></li><li>Successful deployment: <a href="https://github.com/complybean/company-website/actions/runs/30697372605">GitHub Actions run 30697372605</a></li><li>Repository: <a href="https://github.com/complybean/company-website">github.com/complybean/company-website</a></li></ul>
+    <div class="note"><strong>Final recommendation:</strong> approve the site for functional use now, but schedule the two SEO corrections and logo optimization before a broad acquisition, press, or search-indexing campaign.</div>
+    <div class="footer"><span>ComplyBean pre-production test report</span><span>Page 8</span></div>
+  </div></section>
+</body>
+</html>
