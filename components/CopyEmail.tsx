@@ -16,7 +16,7 @@ export default function CopyEmail({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <div className="text-sm text-background/80">
+    <div className={compact ? "text-sm text-foreground" : "text-sm text-background/80"}>
       {!compact && (
         <p className="mb-2">
           You can also reach us directly at
@@ -25,7 +25,11 @@ export default function CopyEmail({ compact = false }: { compact?: boolean }) {
 
       <button
         onClick={copyEmail}
-        className="inline-flex items-center gap-2 font-semibold hover:text-accent transition-colors"
+        className={`inline-flex items-center gap-2 font-semibold transition-colors ${
+            compact
+              ? "text-foreground hover:text-primary"
+              : "hover:text-accent"
+          }`}
       >
         admin@complybean.com
 
