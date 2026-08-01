@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Copy, Check } from 'lucide-react'
 
-export default function CopyEmail() {
+export default function CopyEmail({ compact = false }: { compact?: boolean }) {
   const [copied, setCopied] = useState(false)
 
   const copyEmail = async () => {
@@ -17,9 +17,11 @@ export default function CopyEmail() {
 
   return (
     <div className="text-sm text-background/80">
-      <p className="mb-2">
-        You can also reach us directly at
-      </p>
+      {!compact && (
+        <p className="mb-2">
+          You can also reach us directly at
+        </p>
+      )}
 
       <button
         onClick={copyEmail}
@@ -34,7 +36,7 @@ export default function CopyEmail() {
         )}
       </button>
 
-      {copied && (
+      {copied && !compact && (
         <p className="mt-2 text-xs text-accent">
           Copied!
         </p>
