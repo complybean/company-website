@@ -1,10 +1,8 @@
 @import 'tailwindcss';
-@import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -48,11 +46,13 @@
 @layer base {
   * { @apply border-border outline-ring/50; }
   html { scroll-behavior: smooth; }
-  body { @apply bg-background font-sans text-foreground; }
+  body { @apply bg-background font-sans text-foreground; text-rendering: optimizeLegibility; }
   a, button { @apply transition-colors; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { @apply outline-2 outline-offset-2 outline-ring; }
+  ::selection { @apply bg-accent text-accent-foreground; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }

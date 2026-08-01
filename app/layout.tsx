@@ -1,17 +1,5 @@
-import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist-sans",
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://complybean.com"),
@@ -22,18 +10,19 @@ export const metadata: Metadata = {
   },
 
   description:
-    "ComplyBean helps medical device startups, researchers, and manufacturers navigate regulatory compliance, documentation, quality management, and market approvals with confidence.",
+    "ComplyBean is an AI-enabled regulatory intelligence platform helping medical-device companies prepare FDA 510(k) submissions with greater clarity and confidence.",
 
   keywords: [
     "Medical Device Compliance",
     "Regulatory Compliance",
     "Medical Device Regulations",
-    "ISO 13485",
     "FDA",
-    "CE Marking",
+    "FDA 510(k)",
+    "Predicate Device",
+    "Medical Device Classification",
     "Medical Device Documentation",
     "Regulatory Affairs",
-    "Compliance Consulting",
+    "Regulatory Intelligence",
     "ComplyBean",
   ],
 
@@ -72,14 +61,14 @@ export const metadata: Metadata = {
     siteName: "ComplyBean",
     title: "ComplyBean | Medical Device Regulatory Compliance",
     description:
-      "Helping medical device innovators simplify regulatory compliance from concept to market.",
+      "AI-enabled regulatory intelligence for medical-device companies preparing FDA 510(k) submissions.",
   },
 
   twitter: {
     card: "summary_large_image",
     title: "ComplyBean | Medical Device Regulatory Compliance",
     description:
-      "Helping medical device innovators simplify regulatory compliance from concept to market.",
+      "AI-enabled regulatory intelligence for medical-device companies preparing FDA 510(k) submissions.",
   },
 
   icons: {
@@ -102,11 +91,8 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="bg-background">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         {children}
-        {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
   );

@@ -1,0 +1,15 @@
+# Dependencies
+/node_modules/
+
+# Next.js build cache
+/.next/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Local environment files
+.env*.local
+
+# OS and editor files
+.DS_Store
+*.swp

@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -43,17 +43,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Check code quality
+        run: pnpm lint && pnpm typecheck
+
       - name: Build website
         run: pnpm build
 
-      - name: Ensure CNAME exists
-        run: |
-          if [ -f public/CNAME ]; then
-            cp public/CNAME out/CNAME
-          fi
-
       - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./out
 
