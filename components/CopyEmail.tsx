@@ -16,7 +16,7 @@ export default function CopyEmail() {
   }
 
   return (
-    <div className="mt-5 text-sm text-background/80">
+    <div className="text-sm text-background/80">
       <p className="mb-2">
         You can also reach us directly at
       </p>
