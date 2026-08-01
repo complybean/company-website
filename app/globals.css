@@ -46,13 +46,59 @@
 @layer base {
   * { @apply border-border outline-ring/50; }
   html { scroll-behavior: smooth; }
-  body { @apply bg-background font-sans text-foreground; text-rendering: optimizeLegibility; }
+  body { @apply bg-background font-sans text-foreground; text-rendering: optimizeLegibility; background-image: radial-gradient(circle at 8% 0%, rgba(185, 238, 74, .08), transparent 24rem); }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
   a, button { @apply transition-colors; }
   a:focus-visible, button:focus-visible, summary:focus-visible { @apply outline-2 outline-offset-2 outline-ring; }
   ::selection { @apply bg-accent text-accent-foreground; }
 }
 
+@layer components {
+  .visual-grid {
+    background-image:
+      linear-gradient(rgba(31, 93, 66, .07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(31, 93, 66, .07) 1px, transparent 1px),
+      radial-gradient(circle at 50% 40%, rgba(255, 254, 247, .9), rgba(220, 233, 220, .68));
+    background-size: 28px 28px, 28px 28px, 100% 100%;
+  }
+
+  .section-shell { @apply mx-auto max-w-7xl px-5 md:px-8; }
+  .section-kicker { @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.18em] text-primary; }
+  .section-kicker::before { content: ''; @apply block h-px w-7 bg-primary/50; }
+  .section-title { @apply text-4xl font-semibold leading-[1.08] tracking-[-0.035em] md:text-5xl; }
+  .body-large { @apply text-lg leading-8 text-muted-foreground; }
+  .soft-card { @apply border bg-card shadow-[0_18px_45px_-36px_rgba(18,55,42,.7)]; }
+  .lift-card { @apply transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_24px_50px_-34px_rgba(18,55,42,.7)]; }
+
+  .hero-device-word { @apply relative isolate inline-block; }
+  .hero-device-word::after {
+    content: '';
+    @apply absolute -bottom-[.03em] left-0 -z-10 h-[.16em] w-full rounded-full bg-accent/75;
+    transform: rotate(-1.5deg) scaleX(0);
+    transform-origin: left;
+    animation: marker-draw .55s .45s cubic-bezier(.22, 1, .36, 1) forwards;
+  }
+  .hero-statement {
+    color: #009e6a;
+    text-shadow: 0 .02em 0 rgba(18, 55, 42, .08);
+  }
+  .hero-team-underline { @apply relative inline-block; }
+  .hero-team-underline::after {
+    content: '';
+    @apply absolute -bottom-[.08em] left-[3%] h-[.055em] w-[94%] rounded-full bg-primary/45;
+    transform: rotate(-1deg) scaleX(0);
+    transform-origin: left;
+    animation: marker-draw .65s .72s cubic-bezier(.22, 1, .36, 1) forwards;
+  }
+}
+
+@keyframes marker-draw {
+  to { transform: rotate(-1.5deg) scaleX(1); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+  .hero-device-word::after, .hero-team-underline::after { transform: scaleX(1); }
 }
