@@ -118,7 +118,6 @@ export function ConnectedEvidence() {
           <p className="text-sm font-semibold uppercase tracking-widest text-accent">Everything stays connected</p>
           <h2 className="max-w-xl text-balance text-4xl font-semibold leading-tight tracking-tight md:text-5xl">Change one thing. See everything it touches.</h2>
           <p className="max-w-xl text-pretty text-lg leading-relaxed text-primary-foreground/75">When your device changes, Complybean points to the risks, tests, labels, and documents that may need attention.</p>
-          <a href="#start" className="inline-flex items-center gap-2 font-semibold text-accent hover:opacity-80">See it in action <ArrowRight className="size-4" /></a>
         </div>
         <div className="rounded-4xl bg-card p-5 text-foreground md:p-8" role="img" aria-label="A device change linked to risks, evidence, labels, and submission documents">
           <div className="flex items-center justify-between gap-3 rounded-2xl bg-secondary p-4"><span className="flex items-center gap-3 font-semibold"><RefreshCw className="size-5 text-primary" /> Design updated</span><span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold">Impact found</span></div>
